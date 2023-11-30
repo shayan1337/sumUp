@@ -5,7 +5,7 @@ import (
 	"unicode"
 )
 
-func IsValidCardNumber(cardNumber string) (bool, error) {
+func ValidCardNumber(cardNumber string) (bool, error) {
 	err := validate(cardNumber)
 	if err != nil {
 		return false, err
