@@ -5,6 +5,15 @@ import (
 	"unicode"
 )
 
+func SchemeSupported(schemes []*Scheme, cardNumber string) (string, error) {
+	for _, scheme := range schemes {
+		if scheme.Supports(cardNumber) {
+			return scheme.name, nil
+		}
+	}
+	return "", fmt.Errorf("card number %s does not support any scheme", cardNumber)
+}
+
 func ValidCardNumber(cardNumber string) (bool, error) {
 	err := validate(cardNumber)
 	if err != nil {
